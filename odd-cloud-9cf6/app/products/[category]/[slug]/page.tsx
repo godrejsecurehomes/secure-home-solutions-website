@@ -39,6 +39,20 @@ export async function generateMetadata({
     product.description?.slice(0, 160) ||
     `Buy ${product.name} at Secure Home Solutions. Premium quality, secure storage, and durable design.`;
 
+
+const formattedSize = product.size?.[0]?.replace("(cm)", "").trim();
+
+const formattedPrice = new Intl.NumberFormat("en-IN", {
+  style: "currency",
+  currency: "INR",
+}).format(Number(product.price));
+
+  // const ogDescription = `Size: ${formattedPrice}cm \nprice: ${formattedSize}`
+
+  const ogDescription = `Price: ${formattedPrice} • Size: ${formattedSize}cm • Volume: ${product.volume} Weight: ${product.weight} Heavy Duty • Premium Security Locker`;
+
+  // const ogDescription1 = `${formattedPrice} • ${formattedSize} • ${product.weight} • ${product.volume}`;
+
   const firstImage = product.images[0] || "/images/site/shs-ico.webp";
   const productImage = firstImage.startsWith("http")
     ? firstImage
@@ -49,7 +63,7 @@ export async function generateMetadata({
     description: seoDescription,
     openGraph: {
       title: product.name,
-      description: seoDescription,
+      description: ogDescription,
       url: `${BASE_URL}/products/${category}/${slug}`,
       siteName: "Secure Home Solutions",
       type: "website", // ✅ Must be "website" to avoid Next.js errors
