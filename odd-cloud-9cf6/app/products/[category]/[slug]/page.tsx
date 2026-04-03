@@ -40,16 +40,23 @@ export async function generateMetadata({
     `Buy ${product.name} at Secure Home Solutions. Premium quality, secure storage, and durable design.`;
 
 
-const formattedSize = product.size?.[0]?.replace("(cm)", "").trim();
+  const formattedSize = product.size?.[0]?.replace("(cm)", "").trim();
 
-const formattedPrice = new Intl.NumberFormat("en-IN", {
-  style: "currency",
-  currency: "INR",
-}).format(Number(product.price));
+  const formattedPrice = new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR",
+  }).format(Number(product.price));
 
   // const ogDescription = `Size: ${formattedPrice}cm \nprice: ${formattedSize}`
+  const methods = product.lock_mechanism?.join(" + ").toUpperCase();
+  let ogDescription ="";
 
-  const ogDescription = `Price: ${formattedPrice} • Size: ${formattedSize}cm • Volume: ${product.volume} Weight: ${product.weight} Heavy Duty • Premium Security Locker`;
+  if (category === "locks") {
+    ogDescription = `Price: ${formattedPrice} • Unlock with ${methods} • Smart Keyless Security for Your Home`;
+  } else {
+    ogDescription = `Price: ${formattedPrice} • Size: ${formattedSize}cm • Volume: ${product.volume} Weight: ${product.weight} Heavy Duty • Premium Security Locker`;
+
+  }
 
   // const ogDescription1 = `${formattedPrice} • ${formattedSize} • ${product.weight} • ${product.volume}`;
 
