@@ -129,7 +129,7 @@ export default async function ProductPage({
             offers: {
               "@type": "Offer",
               priceCurrency: "INR",
-              price: new Intl.NumberFormat("en-IN").format(Number(product.price)),
+              price: product.price,
               availability: "https://schema.org/InStock",
             },
           }),
