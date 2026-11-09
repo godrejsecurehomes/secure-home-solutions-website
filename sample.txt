@@ -25,7 +25,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center">
             <Image
               src="/images/site/shs-logo-2.webp"
-              alt="Secure Home Solutions"
+              alt="Secure Home Solutions - A Godrej Locker Shop"
               width={300}
               height={60}
               priority
