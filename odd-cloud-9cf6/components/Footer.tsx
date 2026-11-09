@@ -16,7 +16,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Column 1 */}
         <div>
-          <h3 className="text-lg font-bold mb-3">Secure Home Solutions</h3>
+          <h3 className="text-lg font-bold mb-3">Secure Home Solutions - A Godrej Locker Shop</h3>
           <p className="text-sm text-gray-300 leading-relaxed">
             We believe every home deserves safety, convenience, and most
             importantly — Peace Of Mind.

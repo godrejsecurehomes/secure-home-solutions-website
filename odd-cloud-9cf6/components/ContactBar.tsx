@@ -19,7 +19,7 @@ export default function ContactTopbar() {
             {/* Authorised Godrej Seller */}
             <div className="flex items-center justify-center gap-0 text-base">
               <span className="font-semibold text-gray-800">
-                Authorised
+                A
               </span>
 
               <Image
@@ -31,7 +31,7 @@ export default function ContactTopbar() {
               />
 
               <span className="font-semibold text-gray-800">
-                Seller
+                Locker Shop
               </span>
             </div>
 
@@ -72,7 +72,7 @@ export default function ContactTopbar() {
               {/* Authorised Godrej Seller */}
               <div className="flex items-center gap-0 text-xl">
                 <span className="font-semibold text-gray-800">
-                  Authorised
+                  A
                 </span>
 
                 <Image
@@ -84,7 +84,7 @@ export default function ContactTopbar() {
                 />
 
                 <span className="font-semibold text-gray-800">
-                  Seller
+                  Locker Shop
                 </span>
               </div>
 

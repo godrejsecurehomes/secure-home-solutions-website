@@ -1,3 +1,4 @@
+// @ts-expect-error Next.js handles global CSS imports at build time.
 import "./globals.css";
 import ContactTopbar from "@/components/ContactBar";
 import Navbar from "@/components/Navbar";
@@ -7,18 +8,18 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://homelockers.in"),
-  title: "Secure Home Solutions",
+  title: "Secure Home Solutions - A Godrej Locker Shop - A Godrej Locker Shop",
   description:
     "Homelockers.in is your trusted destination for Godrej lockers, Godrej safe, and safe lockers for home. Explore a wide range of home locker Godrej models at the best Godrej safe locker price. Find the perfect locker safe for home at a Godrej locker showroom near you. Shop securely online or locate Godrej lockers near me with ease. Enjoy PEACE OF MIND with Homelockers.in.",
   icons: {
     icon: "/images/site/shs-ico.webp",
   },
   openGraph: {
-    title: "Secure Home Solutions",
+    title: "Secure Home Solutions - A Godrej Locker Shop - A Godrej Locker Shop",
     description:
       "Homelockers.in is your trusted destination for Godrej lockers, Godrej safe, and safe lockers for home. Explore a wide range of home locker Godrej models at the best Godrej safe locker price. Find the perfect locker safe for home at a Godrej locker showroom near you. Shop securely online or locate Godrej lockers near me with ease. Enjoy PEACE OF MIND with Homelockers.in.",
     url: "https://homelockers.in",
-    siteName: "Secure Home Solutions",
+    siteName: "Secure Home Solutions - A Godrej Locker Shop - A Godrej Locker Shop",
     type: "website",
   },
 };
@@ -27,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "Secure Home Solutions",
+    "name": "Secure Home Solutions - A Godrej Locker Shop - A Godrej Locker Shop",
     "image": "https://homelockers.in/images/site/shs-logo.webp",
     "telephone": "+91-7550084414",
     "address": {
@@ -132,21 +133,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 // export const metadata: Metadata = {
 //   metadataBase: new URL("https://homelockers.in"),
-//   title: "Secure Home Solutions",
+//   title: "Secure Home Solutions - A Godrej Locker Shop",
 //   description: "Homelockers.in is your trusted destination for Godrej lockers, Godrej safe, and safe lockers for home. Explore a wide range of home locker Godrej models at the best Godrej safe locker price. Find the perfect locker safe for home at a Godrej locker showroom near you. Shop securely online or locate Godrej lockers near me with ease. and make sure add PEACE OF MIND AND MAKE SURE ABOUT KEYWORD I SPECIFYED",
 //    icons: {
 //     icon: "/images/site/shs-ico.webp",
 //   },
 //   openGraph: {
-//     title: "Secure Home Solutions",
+//     title: "Secure Home Solutions - A Godrej Locker Shop",
 //     description: "Homelockers.in is your trusted destination for Godrej lockers, Godrej safe, and safe lockers for home. Explore a wide range of home locker Godrej models at the best Godrej safe locker price. Find the perfect locker safe for home at a Godrej locker showroom near you. Shop securely online or locate Godrej lockers near me with ease. and make sure add PEACE OF MIND AND MAKE SURE ABOUT KEYWORD I SPECIFYED",
 //     url: "https://homelockers.in",
-//     siteName: "Secure Home Solutions",
+//     siteName: "Secure Home Solutions - A Godrej Locker Shop",
 //     type: "website",
 //   },
 //   twitter: {
 //     card: "summary_large_image",
-//     title: "Secure Home Solutions",
+//     title: "Secure Home Solutions - A Godrej Locker Shop",
 //     description: "Homelockers.in is your trusted destination for Godrej lockers, Godrej safe, and safe lockers for home. Explore a wide range of home locker Godrej models at the best Godrej safe locker price. Find the perfect locker safe for home at a Godrej locker showroom near you. Shop securely online or locate Godrej lockers near me with ease. and make sure add PEACE OF MIND AND MAKE SURE ABOUT KEYWORD I SPECIFYED",
 //   },
 // };
@@ -155,7 +156,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 //   const localBusinessJsonLd = {
 //     "@context": "https://schema.org",
 //     "@type": "LocalBusiness",
-//     "name": "Secure Home Solutions",
+//     "name": "Secure Home Solutions - A Godrej Locker Shop",
 //     "image": "https://homelockers.in/images/site/shs-logo.webp",
 //     "telephone": "+91-7550084414",
 //     "address": {
@@ -230,21 +231,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 
 // export const metadata: Metadata = {
-//   title: "Secure Home Solutions",
+//   title: "Secure Home Solutions - A Godrej Locker Shop",
 //   description: "Your key to peace of mind. Explore our security solutions.",
 //    icons: {
 //     icon: "/images/site/shs-ico.webp",
 //   },
 //   openGraph: {
-//     title: "Secure Home Solutions",
+//     title: "Secure Home Solutions - A Godrej Locker Shop",
 //     description: "Your key to peace of mind. Explore our security solutions.",
 //     url: "https://yourdomain.com",
-//     siteName: "Secure Home Solutions",
+//     siteName: "Secure Home Solutions - A Godrej Locker Shop",
 //     type: "website",
 //   },
 //   twitter: {
 //     card: "summary_large_image",
-//     title: "Secure Home Solutions",
+//     title: "Secure Home Solutions - A Godrej Locker Shop",
 //     description: "Your key to peace of mind. Explore our security solutions.",
 //   },
 // };
