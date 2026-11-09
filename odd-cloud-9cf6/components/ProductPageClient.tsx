@@ -11,7 +11,6 @@ import ShareButtonFloating from "@/components/ShareButtonFloating";
 import { parseProductDescription } from "@/lib/parseProductDescription";
 import OfferPopup from "./OfferPopup";
 
-
 const toTitleCase = (text: string) => {
   return text
     .split(/[-\s]/)
@@ -47,9 +46,7 @@ export default function ProductPageClient({
   const siteUrl = typeof window !== "undefined" ? window.location.origin : "";
   const productUrl = `${siteUrl}/products/${product.category}/${product.slug}`;
 
-  const parsedDescription = parseProductDescription(
-  product.description
-);
+  const parsedDescription = parseProductDescription(product.description);
 
   return (
     <main className="max-w-7xl mx-auto px-6 py-12 pb-28 overflow-x-hidden">
@@ -57,7 +54,6 @@ export default function ProductPageClient({
         This prevents the grid columns from being pushed wider than the screen by the images.
       */}
       <div className="grid md:grid-cols-2 gap-10">
-        
         {/* Left: Image Slider */}
         <div className="w-full max-w-md mx-auto md:max-w-full min-w-0">
           <div className="relative group">
@@ -162,37 +158,35 @@ export default function ProductPageClient({
           </p> */}
 
           <div className="mt-2">
-  {product.offer_price ? (
-    <div className="flex items-center gap-3 flex-wrap">
-      <span className="text-2xl text-blue-600 font-semibold">
-        ₹{new Intl.NumberFormat("en-IN").format(
-          Number(product.offer_price)
-        )}
-      </span>
+            {product.offer_price ? (
+              <div className="flex items-center gap-3 flex-wrap">
+                <span className="text-2xl text-blue-600 font-semibold">
+                  ₹
+                  {new Intl.NumberFormat("en-IN").format(
+                    Number(product.offer_price),
+                  )}
+                </span>
 
-      <span className="text-lg text-gray-400 line-through">
-        ₹{new Intl.NumberFormat("en-IN").format(
-          Number(product.price)
-        )}
-      </span>
+                <span className="text-lg text-gray-400 line-through">
+                  ₹
+                  {new Intl.NumberFormat("en-IN").format(Number(product.price))}
+                </span>
 
-      <span className="px-2 py-1 text-xs font-semibold rounded-md bg-red-100 text-red-600">
-        OFFER
-      </span>
-    </div>
-  ) : (
-    <span className="text-2xl text-blue-600 font-semibold">
-      ₹{new Intl.NumberFormat("en-IN").format(
-        Number(product.price)
-      )}
-    </span>
-  )}
-</div>
+                <span className="px-2 py-1 text-xs font-semibold rounded-md bg-red-100 text-red-600">
+                  OFFER
+                </span>
+              </div>
+            ) : (
+              <span className="text-2xl text-blue-600 font-semibold">
+                ₹{new Intl.NumberFormat("en-IN").format(Number(product.price))}
+              </span>
+            )}
+          </div>
 
           <div className="mt-4">
             <ShareButtons url={productUrl} title={product.name} />
           </div>
-          
+
           {productUrl && (
             <ShareButtonFloating url={productUrl} title={product.name} />
           )}
@@ -203,36 +197,56 @@ export default function ProductPageClient({
                 <strong>Size:</strong>
                 <div className="flex gap-2 mt-1 flex-wrap">
                   {product.size.map((s, i) => (
-                    <span key={i} className="px-3 py-1 text-sm rounded-full bg-gray-100 border">{s}</span>
-                  ))}
-                </div>
-              </div>
-            )}
-            {product.weight && <p><strong>Weight:</strong> {product.weight}</p>}
-            {product.volume && <p><strong>Volume:</strong> {product.volume}</p>}
-          </div>
-
-          {/* Mechanisms & Highlights */}
-          <div className="space-y-6 mt-6">
-            {Array.isArray(product.lock_mechanism) && product.lock_mechanism.length > 0 && (
-              <div>
-                <h3 className="font-semibold mb-2">Lock Mechanism</h3>
-                <div className="flex flex-wrap gap-2">
-                  {product.lock_mechanism.map((lock, i) => (
-                    <span key={i} className="px-3 py-1 text-sm rounded-full bg-gray-100 border">
-                      {toTitleCase(lock)}
+                    <span
+                      key={i}
+                      className="px-3 py-1 text-sm rounded-full bg-gray-100 border"
+                    >
+                      {s}
                     </span>
                   ))}
                 </div>
               </div>
             )}
+            {product.weight && (
+              <p>
+                <strong>Weight:</strong> {product.weight}
+              </p>
+            )}
+            {product.volume && (
+              <p>
+                <strong>Volume:</strong> {product.volume}
+              </p>
+            )}
+          </div>
+
+          {/* Mechanisms & Highlights */}
+          <div className="space-y-6 mt-6">
+            {Array.isArray(product.lock_mechanism) &&
+              product.lock_mechanism.length > 0 && (
+                <div>
+                  <h3 className="font-semibold mb-2">Lock Mechanism</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {product.lock_mechanism.map((lock, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1 text-sm rounded-full bg-gray-100 border"
+                      >
+                        {toTitleCase(lock)}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
 
             {Array.isArray(product.tags) && product.tags.length > 0 && (
               <div>
                 <h3 className="font-semibold mb-2">Highlights</h3>
                 <div className="flex flex-wrap gap-2">
                   {product.tags.map((tag, i) => (
-                    <span key={i} className="px-3 py-1 text-sm rounded-full bg-yellow-100 text-yellow-800 border border-yellow-300">
+                    <span
+                      key={i}
+                      className="px-3 py-1 text-sm rounded-full bg-yellow-100 text-yellow-800 border border-yellow-300"
+                    >
                       {toTitleCase(tag)}
                     </span>
                   ))}
@@ -242,10 +256,18 @@ export default function ProductPageClient({
           </div>
 
           <div className="hidden md:flex gap-4 mt-8">
-            <a href="tel:+917550084414" className="flex items-center gap-2 px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow font-medium">
+            <a
+              href="tel:+917550084414"
+              className="flex items-center gap-2 px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow font-medium"
+            >
               <Phone className="w-5 h-5" /> Call Now
             </a>
-            <a href="https://wa.me/917550084414" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 text-white bg-green-600 hover:bg-green-700 rounded-lg shadow font-medium">
+            <a
+              href="https://wa.me/917550084414"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-6 py-3 text-white bg-green-600 hover:bg-green-700 rounded-lg shadow font-medium"
+            >
               <MessageCircle className="w-5 h-5" /> WhatsApp
             </a>
           </div>
@@ -259,82 +281,70 @@ export default function ProductPageClient({
           {product.description}
         </p> */}
 
-
         <div className="space-y-10">
+          {/* Overview */}
+          {parsedDescription.intro && (
+            <section>
+              <h2 className="text-2xl font-bold mb-4">Product Overview</h2>
 
-  {/* Overview */}
-  {parsedDescription.intro && (
-    <section>
-      <h2 className="text-2xl font-bold mb-4">
-        Product Overview
-      </h2>
-
-      <p className="text-gray-600 leading-7 whitespace-pre-line">
-        {parsedDescription.intro}
-      </p>
-    </section>
-  )}
-
-  {/* Features */}
-  {parsedDescription.features.length > 0 && (
-    <section>
-      <h2 className="text-2xl font-bold mb-6">
-        Key Features
-      </h2>
-
-      <div className="grid gap-4 md:grid-cols-2">
-        {parsedDescription.features.map((feature, index) => (
-          <div
-            key={index}
-            className="rounded-xl border border-gray-200 p-5"
-          >
-            <h3 className="font-semibold text-lg mb-2">
-              {feature.title}
-            </h3>
-
-            {feature.description && (
-              <p className="text-gray-600 leading-6">
-                {feature.description}
+              <p className="text-gray-600 leading-7 whitespace-pre-line">
+                {parsedDescription.intro}
               </p>
-            )}
-          </div>
-        ))}
-      </div>
-    </section>
-  )}
+            </section>
+          )}
 
-  {/* Specifications */}
-  {parsedDescription.specifications.length > 0 && (
-    <section>
-      <h2 className="text-2xl font-bold mb-6">
-        Specifications
-      </h2>
+          {/* Features */}
+          {parsedDescription.features.length > 0 && (
+            <section>
+              <h2 className="text-2xl font-bold mb-6">Key Features</h2>
 
-      <div className="overflow-hidden rounded-xl border border-gray-200">
-        {parsedDescription.specifications.map((spec, index) => (
-          <div
-            key={index}
-            className={`grid grid-cols-1 sm:grid-cols-2 ${
-              index !==
-              parsedDescription.specifications.length - 1
-                ? "border-b border-gray-200"
-                : ""
-            }`}
-          >
-            <div className="bg-gray-50 px-5 py-4 font-medium">
-              {spec.label}
-            </div>
+              <div className="grid gap-4 md:grid-cols-2">
+                {parsedDescription.features.map((feature, index) => (
+                  <div
+                    key={index}
+                    className="rounded-xl border border-gray-200 p-5"
+                  >
+                    <h3 className="font-semibold text-lg mb-2">
+                      {feature.title}
+                    </h3>
 
-            <div className="px-5 py-4 text-gray-600">
-              {spec.value}
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  )}
+                    {feature.description && (
+                      <p className="text-gray-600 leading-6">
+                        {feature.description}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
 
-</div>
+          {/* Specifications */}
+          {parsedDescription.specifications.length > 0 && (
+            <section>
+              <h2 className="text-2xl font-bold mb-6">Specifications</h2>
+
+              <div className="overflow-hidden rounded-xl border border-gray-200">
+                {parsedDescription.specifications.map((spec, index) => (
+                  <div
+                    key={index}
+                    className={`grid grid-cols-1 sm:grid-cols-2 ${
+                      index !== parsedDescription.specifications.length - 1
+                        ? "border-b border-gray-200"
+                        : ""
+                    }`}
+                  >
+                    <div className="bg-gray-50 px-5 py-4 font-medium">
+                      {spec.label}
+                    </div>
+
+                    <div className="px-5 py-4 text-gray-600">{spec.value}</div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
       </div>
 
       {/* Related Products */}
@@ -351,37 +361,29 @@ export default function ProductPageClient({
 
       {/* Mobile Sticky Footer */}
       <div className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-lg flex md:hidden z-50">
-        <a href="tel:+917550084414" className="flex-1 flex items-center justify-center gap-2 py-3 text-white bg-blue-600 font-medium">
+        <a
+          href="tel:+917550084414"
+          className="flex-1 flex items-center justify-center gap-2 py-3 text-white bg-blue-600 font-medium"
+        >
           <Phone className="w-5 h-5" /> Call Now
         </a>
-        <a href={`https://wa.me/917550084414?text=Interested in ${product.name}`} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 py-3 text-white bg-green-600 font-medium">
-          <MessageCircle className="w-5 h-5" /> WhatsApp
+        <a
+          href={`https://wa.me/917550084414?text=${encodeURIComponent(
+            `Hi, I'm interested in ${product.name}. Please share the best price, delivery timeline, and installation details.`,
+          )}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 flex items-center justify-center gap-2 py-3 text-white bg-green-600 font-medium"
+        >
+          <MessageCircle className="w-5 h-5" />
+          WhatsApp
         </a>
       </div>
 
-      {product.offer_price && (
-  <OfferPopup product={product} />
-)}
+      {product.offer_price && <OfferPopup product={product} />}
     </main>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // "use client";
 
@@ -436,14 +438,14 @@ export default function ProductPageClient({
 //   return (
 //     // Premium Change: Updated background to a very subtle off-white, refined text to slate, added better padding
 //     <main className="min-h-screen bg-[#FBFBFD] text-slate-900 font-sans antialiased max-w-7xl mx-auto px-5 md:px-10 py-10 md:py-16 pb-32 md:pb-20 overflow-x-hidden">
-      
+
 //       {/* Grid Structure (Maintained structure but refined spacing) */}
 //       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
-        
+
 //         {/* LEFT SIDE: Image Gallery */}
 //         <div className="w-full max-w-xl mx-auto md:max-w-full min-w-0">
 //           <div className="relative group">
-            
+
 //             {/* Main Image Container */}
 //             {/* Premium Change: Refined shadow, cleaner border, subtle background */}
 //             <div className="relative w-full aspect-square md:aspect-[4/3] bg-white rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100/80">
@@ -517,7 +519,7 @@ export default function ProductPageClient({
 
 //         {/* RIGHT SIDE: Product Details */}
 //         <div className="min-w-0 flex flex-col pt-2">
-          
+
 //           {/* Title and Category */}
 //           {/* Premium Change: Refined typography (Inter-style), category badge */}
 //           <div className="mb-6">
@@ -544,15 +546,15 @@ export default function ProductPageClient({
 //                 ₹{new Intl.NumberFormat("en-IN").format(Number(product.price))}
 //               </p>
 //             </div>
-            
+
 //             <div className="h-16 w-px bg-gray-100" /> {/* vertical divider */}
-            
+
 //             <div className="flex flex-col items-center gap-1.5">
 //               <span className="text-sm text-gray-500 font-medium">Share</span>
 //               <ShareButtons url={productUrl} title={product.name} />
 //             </div>
 //           </div>
-          
+
 //           {productUrl && (
 //             <ShareButtonFloating url={productUrl} title={product.name} />
 //           )}
@@ -560,7 +562,7 @@ export default function ProductPageClient({
 //           {/* Specifications Grid */}
 //           {/* Premium Change: Refined layout into grid cards with icons, much cleaner visual hierarchy */}
 //           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-            
+
 //             {Array.isArray(product.size) && product.size.length > 0 && (
 //               <div className="col-span-1 sm:col-span-2 bg-gray-50 p-5 rounded-2xl border border-gray-100">
 //                 <div className="flex items-center gap-3 mb-3">
@@ -576,7 +578,7 @@ export default function ProductPageClient({
 //                 </div>
 //               </div>
 //             )}
-            
+
 //             {product.weight && (
 //               <div className="bg-gray-50 p-5 rounded-2xl border border-gray-100">
 //                 <div className="flex items-center gap-3 mb-1.5">
@@ -586,7 +588,7 @@ export default function ProductPageClient({
 //                 <p className="text-xl font-bold text-slate-900 tracking-tight">{product.weight}</p>
 //               </div>
 //             )}
-            
+
 //             {product.volume && (
 //               <div className="bg-gray-50 p-5 rounded-2xl border border-gray-100">
 //                 <div className="flex items-center gap-3 mb-1.5">
@@ -714,7 +716,7 @@ export default function ProductPageClient({
 //               }`}
 //               onClick={() => setZoomed(!zoomed)}
 //             />
-            
+
 //             <button
 //               onClick={() => setIsFullscreen(false)}
 //               aria-label="Close fullscreen view"
@@ -722,7 +724,7 @@ export default function ProductPageClient({
 //             >
 //               ✕
 //             </button>
-            
+
 //             {totalImages > 1 && (
 //               <>
 //                 <button

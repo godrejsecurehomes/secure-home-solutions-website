@@ -13,10 +13,13 @@ export default function CTASection() {
           Secure Your Home Today with Godrej Lockers!
         </h3>
         <p className="text-lg md:text-xl mb-8 text-white/90">
-          Protect what matters most. Quick, reliable, and designed for your peace of mind.
+          Protect what matters most. Quick, reliable, and designed for your
+          peace of mind.
         </p>
         <Link
-          href="https://wa.me/917550084414?text=I'm%20interested%20in%20Lockers"
+          href={`https://wa.me/917550084414?text=${encodeURIComponent(
+            "Hi, I'm looking for a Godrej home locker. Please help me choose a suitable model and share the best price, delivery timeline, and installation details.",
+          )}`}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-white text-sky-700 font-bold px-8 py-4 rounded-full shadow-lg hover:scale-105 transition transform"
